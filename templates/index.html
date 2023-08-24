@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Face Expression Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<style>
+    body {
+        background: #13042e;
+        color: aliceblue;
+    }
+</style>
+
+<body>
+    <center>
+        <div class="containter">
+            <h1>Upload Human Face Expression Image</h1>
+            <form method="post" enctype="multipart/form-data">
+                <input type="file" name="image" class="form-control my-2" style="width: 45%;" placeholder="Please upload a human faces expression" required>
+                <button type=" submit " class="btn btn-outline-success">Predict</button>
+            </form>
+            <div class="contain ">
+                <div class="containter ">
+                    <!-- Display the predictions -->
+                    {% if predictions %}
+                    <hr>
+                    <h2>Predictions Reports:</h2>
+                    <hr>
+                    <div class="containter " style="display: block ruby; ">
+                        <p class="p-1 h4">Angry :- {{ predictions[0] }}%</p>
+                        <p class="p-1 h4">Happy :- {{ predictions[1] }}%</p>
+                        <p class="p-1 h4">Sad :- {{ predictions[2] }}%</p>
+                    </div>
+                    <hr> {% endif %}
+                </div>
+                <!-- Display the uploaded image -->
+                {% if uploaded_image %}
+                <h2>Uploaded Image:</h2>
+                <img src="data:image/jpeg;base64,{{ uploaded_image }} " alt="Uploaded Image " class="img-fluid " width="1100 " height="1100 "> {% endif %}
+            </div>
+        </div>
+    </center>
+
+
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+    <div class="mt-2">
+
+        <footer class="text-center text-white">
+            <!-- Copyright -->
+            <div class="text-center text-dark p-3" style="background-color: rgba(157, 157, 157, 0.2);">
+                <span class="text-white" style="font-size: larger;">© 2023 CopyRight:</span>
+                <a class="text-dark" href="#" style="text-decoration: none;"><span
+                        style="color: white;font-size: larger;">Rishu Kumar Gupta </span>|<span
+                        style="color: #d58010;font-weight: bolder;font-size: larger;">Human Face Expression Detection</span></a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm " crossorigin="anonymous "></script>
+</body>
+
+</html>
